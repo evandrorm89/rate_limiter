@@ -6,19 +6,19 @@ import (
 )
 
 type Store interface {
-	Incr(key string) (int, error)
+	Incr(key string) (int64, error)
 	Expire(key string, duration time.Duration) error
 	TTL(key string) (time.Duration, error)
 }
 
 type RateLimiter struct {
-	store         *RedisStore
+	store         Store
 	ipLimit       int64
 	tokenLimit    int64
 	blockDuration time.Duration
 }
 
-func NewRateLimiter(store *RedisStore, ipLimit, tokenLimit int64, blockDuration time.Duration) *RateLimiter {
+func NewRateLimiter(store Store, ipLimit, tokenLimit int64, blockDuration time.Duration) *RateLimiter {
 	return &RateLimiter{
 		store:         store,
 		ipLimit:       ipLimit,
