@@ -43,3 +43,21 @@ Teste seu rate limiter sob diferentes condições de carga para garantir que ele
 - Testes automatizados demonstrando a eficácia e a robustez do rate limiter.
 - Utilize docker/docker-compose para que possamos realizar os testes de sua aplicação.
 - O servidor web deve responder na porta 8080.
+
+## Executando Projeto Localmente:
+Subir em containers separados o Redis e aplicação, onde a aplicação também faz os testes dentro do container antes de terminar de subir.
+Para tal basta utilizar o docker compose na raiz do projeto, digitando o seguinte comando:
+
+```bash
+docker-compose up --build
+```
+
+Uma vez com os containers prontos, fazer um GET para: http://localhost:8080/__ *(para realizar testes com token basta adicionar o **API_KEY** no header)*
+
+## Config
+### Envs
+[/cmd/.env](cmd/.env)
+- **RATE_LIMIT_IP:** Quantidade máxima de requisições por IP.
+- **RATE_LIMIT_TOKEN:** Quantidade máxima de requisições por Token.
+- **BLOCK_DURATION:** Duração do bloqueio.
+- **REDIS_URL:** Url do Redis.
