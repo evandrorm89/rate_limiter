@@ -56,7 +56,7 @@ Uma vez com os containers prontos, fazer um GET para: http://localhost:8080/__ *
 
 ## Config
 ### Envs
-[/cmd/.env](cmd/.env)
+[/.env](cmd/.env)
 - **RATE_LIMIT_IP:** Quantidade máxima de requisições por IP.
 - **RATE_LIMIT_TOKEN:** Quantidade máxima de requisições por Token.
 - **BLOCK_DURATION:** Duração do bloqueio.
