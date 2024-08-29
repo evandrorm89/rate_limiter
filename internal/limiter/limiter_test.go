@@ -17,6 +17,11 @@ func (m *MockRedisStore) Incr(key string) (int64, error) {
 	return m.store[key], nil
 }
 
+func (m *MockRedisStore) Expire(key string, duration time.Duration) error {
+	// Simule o comportamento de expiração se necessário
+	return nil
+}
+
 func (m *MockRedisStore) TTL(key string) (time.Duration, error) {
 	// Simular o TTL retornando, por exemplo, 10 segundos
 	return 10 * time.Second, nil
